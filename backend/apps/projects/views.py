@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .models import Project #, Phase, Task
-from .serializers import ProjectSerializer #, PhaseSerializer, TaskSerializer
+from .models import Project, ProjectUser
+from .serializers import ProjectSerializer, ProjectUserSerializer
 from apps.users.permissions import IsConsultantOrReadOnly
 
 class ProjectViewSet(viewsets.ModelViewSet):
@@ -11,4 +11,15 @@ class ProjectViewSet(viewsets.ModelViewSet):
     """
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
+    permission_classes = [IsConsultantOrReadOnly]
+
+
+class ProjectUserViewSet(viewsets.ModelViewSet):
+    """
+    ViewSet para asignación de usuarios a proyectos.
+    Consultores y Admin pueden asignar usuarios a proyectos.
+    Todos los autenticados pueden ver asignaciones.
+    """
+    queryset = ProjectUser.objects.select_related('project', 'user')
+    serializer_class = ProjectUserSerializer
     permission_classes = [IsConsultantOrReadOnly]

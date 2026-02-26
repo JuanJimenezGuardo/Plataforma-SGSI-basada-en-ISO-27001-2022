@@ -31,3 +31,35 @@ class Project(models.Model):
         verbose_name = 'Proyecto'
         verbose_name_plural = 'Proyectos'
         ordering = ['-created_at']
+
+
+# Choices para ProjectUser
+PROJECT_ROLE_CHOICES = (
+    ('ADMIN', 'Administrador del Proyecto'),
+    ('CONSULTANT', 'Consultor'),
+    ('CLIENT', 'Cliente'),
+    ('VIEWER', 'Observador'),
+)
+
+
+class ProjectUser(models.Model):
+    """
+    Relación entre usuarios y proyectos con roles específicos.
+    Permite que un usuario tenga diferentes roles en diferentes proyectos.
+    """
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='project_users', verbose_name='Proyecto')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='project_assignments', verbose_name='Usuario')
+    role = models.CharField(max_length=20, choices=PROJECT_ROLE_CHOICES, verbose_name='Rol en el proyecto')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de asignación')
+    updated_at = models.DateTimeField(auto_now=True, verbose_name='Fecha de actualización')
+    
+    class Meta:
+        db_table = 'projects_projectuser'
+        verbose_name = 'Usuario de Proyecto'
+        verbose_name_plural = 'Usuarios de Proyectos'
+        # Un usuario solo puede tener un rol por proyecto (sin duplicados)
+        unique_together = ['project', 'user']
+        ordering = ['-created_at']
+    
+    def __str__(self):
+        return f'{self.user.username} - {self.project.name} ({self.get_role_display()})'
