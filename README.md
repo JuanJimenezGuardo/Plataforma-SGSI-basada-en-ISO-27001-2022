@@ -62,14 +62,18 @@ Permitir a empresas implementar ISO 27001 de forma estructurada, con gestión de
 
 ## 📅 Timeline: 6 Sprints (18 feb → 15 may 2026)
 
-### Sprint 1 (19 feb - 2 mar): Auth + Security Base
-- User model (AbstractUser)
-- JWT authentication
-- Role-based permissions
-- ProjectUser (user-project-role relationship)
-- AuditLog (who did what when)
+### ✅ Sprint 1 (19 feb - 2 mar): Auth + Security Base [COMPLETADO - v0.1-sprint1]
+- ✅ User model (AbstractUser con roles: ADMIN, CONSULTANT, CLIENT)
+- ✅ JWT authentication (SimpleJWT con access + refresh tokens)
+- ✅ Role-based permissions (6 permission classes: IsAdmin, IsConsultant, IsClient, etc.)
+- ✅ ProjectUser (user-project-role relationship con CRUD completo)
+- ✅ AuditLog (modelo, serializer, viewset - registra QUIEN/QUE/CUANDO automáticamente)
+- ✅ Django signals (10 signal receivers para logging automático de cambios)
+- ✅ Demo data + automated tests (test_demo_sprint1.py valida 5 escenarios completos)
 
-**Decisión de Producción:** Settings por entorno, JWT cookies seguras, CORS configurado, GitHub Actions iniciado
+**Estado:** Backend 100% funcional. 7 endpoints protegidos, 3 roles trabajando, AuditLog registrando cambios automáticamente.
+
+**Decisión de Producción:** Settings por entorno ✅, JWT cookies seguras ✅, CORS configurado ✅, estructura production-ready ✅
 
 ### Sprint 2 (3 - 16 mar): Scope + Assets
 - Scope (alcance del SGSI)

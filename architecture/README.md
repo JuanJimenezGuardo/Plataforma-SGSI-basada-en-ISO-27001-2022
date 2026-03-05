@@ -16,18 +16,25 @@ Construir una plataforma completa donde:
 
 ---
 
-## Estado actual del proyecto (al 18-02-2026)
+## Estado actual del proyecto (al 4 marzo 2026)
 
-**Avance implementado (backend):** Users, Companies, Projects, Phases y Tasks operativos (API REST en Django + DRF).  
-**Pendiente crítico (backend):** autenticación/autorización (JWT), núcleo SGSI (Scope, Asset, Risk, ISOControl, SoAItem, Evidence, Report) y auditoría completa.  
-**Frontend:** existe la estructura base (Vite) pero aún no hay páginas ni componentes implementados.
+**✅ SPRINT 1 COMPLETADO (v0.1-sprint1):**
+- ✅ User model con AbstractUser (3 roles: ADMIN, CONSULTANT, CLIENT)
+- ✅ JWT authentication (SimpleJWT implementado, tokens generados)
+- ✅ Permisos por rol/proyecto (RBAC + ProjectUser con 6 permission classes)
+- ✅ AuditLog con Django signals (registro automático de QUIEN/QUE/CUANDO)
+- ✅ Companies, Projects, Phases, Tasks (CRUD completo)
+- ✅ Demo data population (populate_demo_data.py)
+- ✅ Test suite automatizado (test_demo_sprint1.py: 5 escenarios validados)
+- ✅ Git: Commit tagged v0.1-sprint1, historial limpio
 
-**Próximos pasos inmediatos (prioridad):**
-1. Activar **Auth/JWT** y permisos por rol/proyecto (RBAC + ProjectUser).
-2. Implementar **Scope + Asset** y luego **Risk** (inherente/residual) con relación Risk↔Asset.
-3. Cargar **ISOControl** (93 controles) y generar **SoA** por proyecto.
-4. Implementar **Evidence** (subidas/estados) y **AuditLog** para trazabilidad.
-5. Iniciar frontend con **Login**, rutas protegidas y vista básica de proyectos.
+**Próximos pasos inmediatos (Sprint 2-6):**
+1. **Sprint 2:** Implementar **Scope + Asset** (alcance del SGSI e inventarios)
+2. **Sprint 3:** Implementar **Risk** (riesgos inherente/residual con cálculo automático)
+3. **Sprint 4:** Cargar **ISOControl** (93 controles) y generar **SoA** automático
+4. **Sprint 5:** Implementar **Evidence** (carga/versioning/aprobación)
+5. **Sprint 6:** Reports + Dashboards
+6. **Frontend:** React + Vite (Login, PrivateRoute, dashboards por rol)
 
 
 

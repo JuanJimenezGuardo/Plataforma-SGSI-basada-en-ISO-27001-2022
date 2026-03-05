@@ -25,16 +25,25 @@
    - CRUD completo
 
 3. projects/ - Gestion de proyectos ISO 27001
-   - Modelos: Project, Phase, Task
-   - Endpoints: /api/projects/, /api/phases/, /api/tasks/
+   - Modelos: Project, Phase, Task, ProjectUser
+   - Endpoints: /api/projects/, /api/phases/, /api/tasks/, /api/project-users/
    - Relaciones anidadas, seguimiento de tareas
+   - ProjectUser: asignación de usuarios a proyectos con roles específicos
+   - Filtrado automático: cada usuario ve solo sus proyectos
 
-4. risks/ - Evaluacion de riesgos
+4. users/ - Autenticación, seguridad y auditoría (SPRINT 1 ✅)
+   - Modelo: User (AbstractUser con roles ADMIN/CONSULTANT/CLIENT)
+   - Modelo: AuditLog (QUIEN/QUE/CUANDO/DONDE con JSONField para cambios)
+   - Endpoints: /api/token/ (login JWT), /api/users/ (CRUD), /api/audit-logs/ (consulta)
+   - Signals: 10 receivers automáticos registran cambios en todas las acciones
+   - 6 permission classes para control fino de acceso
+
+5. risks/ - Evaluacion de riesgos (Sprint 3)
    - Modelo: Risk (con matriz likelihood x impact)
    - Endpoints: /api/risks/
-   - Calculo automatico de risk_score
+   - Cálculo automático de risk_score (sprint 3)
 
-5. iso_controls/ - Controles ISO 27001 y SoA
+6. iso_controls/ - Controles ISO 27001 y SoA (Sprint 4)
    - Modelos: ISOControl (codigo A.5.1, etc.), SoAItem (aplicabilidad)
    - Endpoints: /api/iso-controls/ (lectura), /api/soa-items/ (CRUD)
    - Statement of Applicability
@@ -48,16 +57,22 @@
    - Modelo: Report (Progress, Risk, SoA, Compliance, Executive)
    - Endpoints: /api/reports/ con acciones /generate/ y /send/
 
-### Caracteristicas
-- Autenticacion basada en sesion/token
-- Sistema de roles (ADMIN, CONSULTANT, CLIENT)
-- CORS habilitado para frontend en localhost:3000
-- Timestamps en todos los modelos (created_at, updated_at)
-- Relaciones ForeignKey y ManyToMany
-- Admin panel de Django configurado
-- Serializers anidados para relaciones
-- ViewSets automaticos con CRUD
-- Permisos basados en roles
+### Caracteristicas (SPRINT 1 ✅ Completado)
+- ✅ Autenticación JWT con SimpleJWT (access + refresh tokens, 15min + 1day)
+- ✅ Sistema de roles (ADMIN, CONSULTANT, CLIENT) con 6 permission classes
+- ✅ Permisos granulares (IsAdmin, IsConsultant, IsClient, IsAdminOrReadOnly, IsConsultantOrReadOnly, IsOwnerOrReadOnly)
+- ✅ ProjectUser: relación user-project-role con filtrado automático por rol
+- ✅ AuditLog automático: Django signals registran CREATE/UPDATE/DELETE sin código adicional
+- ✅ CORS habilitado para frontend en localhost:3000
+- ✅ Timestamps en todos los modelos (created_at, updated_at)
+- ✅ Relaciones ForeignKey y ManyToMany con validaciones
+- ✅ Admin panel de Django configurado para todas las apps
+- ✅ Serializers anidados para relaciones complejas
+- ✅ ViewSets automáticos con CRUD y filtrado por rol
+- ✅ 7 endpoints protegidos (usuarios, empresas, proyectos, fases, tareas, project-users, audit-logs)
+- ✅ Demo data population script (populate_demo_data.py)
+- ✅ Automated test suite (test_demo_sprint1.py: 5 escenarios, todos passing)
+- ✅ Git: v0.1-sprint1 tagged, 12+ commits en Sprint 1
 
 ## Como usar
 

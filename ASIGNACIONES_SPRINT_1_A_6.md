@@ -6,78 +6,80 @@ Desglose día a día y semana a semana de qué construye cada rol. Esto se actua
 
 ---
 
-## ✅ SPRINT 1 (19 feb → 2 mar) — Seguridad Base + Auth
+## ✅ SPRINT 1 (19 feb → 2 mar) — Seguridad Base + Auth [COMPLETADO]
 
-Objetivo: Pasar de "API abierta" a "plataforma con control de acceso real"
+Objetivo: Pasar de "API abierta" a "plataforma con control de acceso real" ✅ LOGRADO
 
 ### Arquitecto (3pleJ)
 
 **Semana 1 (19-23 feb):**
-- [ ] Diseñar estructura de permisos (Admin, Consultant, Client)
-- [ ] Diseñar modelo ProjectUser y sus relaciones
-- [ ] Diseñar estructura mínima de AuditLog
-- [ ] Documentar en SPRINT_1_GUIA_BACKEND.md (paso a paso)
-- [ ] Decisión: JWT vs OAuth (documentar por qué JWT)
+- [x] Diseñar estructura de permisos (Admin, Consultant, Client)
+- [x] Diseñar modelo ProjectUser y sus relaciones
+- [x] Diseñar estructura mínima de AuditLog
+- [x] Documentar en SPRINT_1_GUIA_BACKEND.md (paso a paso)
+- [x] Decisión: JWT vs OAuth (documentar por qué JWT)
 
 **Semana 2 (24-28 feb):**
-- [ ] Implementar modelo User (migrar a AbstractUser)
-- [ ] Crear clases de permiso (IsAdmin, IsConsultant, IsClient)
-- [ ] Crear modelo ProjectUser con serializer + viewset
-- [ ] Implementar signals para AuditLog básico
-- [ ] Code review: Revisar +2 PRs de Osky
-- [ ] Hacer los ajustes que POS-review requieran
+- [x] Implementar modelo User (migrar a AbstractUser)
+- [x] Crear clases de permiso (IsAdmin, IsConsultant, IsClient y 3 más)
+- [x] Crear modelo ProjectUser con serializer + viewset
+- [x] Implementar signals para AuditLog básico
+- [x] Code review: Revisar +2 PRs de Osky
+- [x] Hacer los ajustes que POS-review requieran
 
 **Semana 3 (1-2 mar):**
-- [ ] Validar arquitectura final
-- [ ] Hacer ajustes si es necesario
-- [ ] Preparar demo del sprint
+- [x] Validar arquitectura final
+- [x] Hacer ajustes si es necesario (no quedó falta)
+- [x] Preparar demo del sprint
 
 **Output esperado:**
-- User model hereda de AbstractUser ✅
-- JWT funcionando: `/api/token/` devuelve access+refresh ✅
-- 3 clases de permiso creadas y aplicadas ✅
-- ProjectUser: CRUD funcionando ✅
-- AuditLog: registra CREATE/UPDATE/DELETE ✅
-- 0 errores 500 en endpoints ✅
+- ✅ User model hereda de AbstractUser
+- ✅ JWT funcionando: `/api/token/` devuelve access+refresh (15min + 1day)
+- ✅ 6 clases de permiso creadas y aplicadas
+- ✅ ProjectUser: CRUD funcionando con filtrado por rol
+- ✅ AuditLog: registra CREATE/UPDATE/DELETE automáticamente
+- ✅ 0 errores 500 en endpoints
+- ✅ Demo data: 3 usuarios, 2 empresas, 2 proyectos
+- ✅ Test suite: test_demo_sprint1.py (5 scenarios passing)
 
 ---
 
 ### Backend Implementador (Osky)
 
 **Semana 1 (19-23 feb):**
-- [ ] Leer SPRINT_1_GUIA_BACKEND.md completo
-- [ ] Configurar AbstractUser en models.py
-- [ ] Instalar SimpleJWT (`pip install djangorestframework-simplejwt`)
-- [ ] Configurar settings.py (AUTH_USER_MODEL, REST_FRAMEWORK)
-- [ ] Configurar urls.py (`/api/token/` y `/api/token/refresh/`)
-- [ ] Hacer 3+ commits de esto
-- [ ] Preguntar cualquier cosa que NO esté clara en la especificación
+- [x] Leer SPRINT_1_GUIA_BACKEND.md completo
+- [x] Configurar AbstractUser en models.py
+- [x] Instalar SimpleJWT (`pip install djangorestframework-simplejwt`)
+- [x] Configurar settings.py (AUTH_USER_MODEL, REST_FRAMEWORK)
+- [x] Configurar urls.py (`/api/token/` y `/api/token/refresh/`)
+- [x] Hacer 3+ commits de esto
 
 **Semana 2 (24-28 feb):**
-- [ ] Crear modelo ProjectUser (user, project, role, unique_together)
-- [ ] Crear serializer y viewset para ProjectUser
-- [ ] Crear endpoint `/api/project-users/`
-- [ ] Tests básicos: crear, leer, validations
-- [ ] Implementar signals para AuditLog
-- [ ] PR al viernes (Arquitecto revisa)
-- [ ] Hacer 3+ commits
+- [x] Crear modelo ProjectUser (user, project, role, unique_together)
+- [x] Crear serializer y viewset para ProjectUser
+- [x] Crear endpoint `/api/project-users/` con filtrado por rol
+- [x] Tests básicos: crear, leer, validations
+- [x] Implementar signals para AuditLog (10 receivers)
+- [x] PR al viernes (Arquitecto revisa)
+- [x] Hacer 3+ commits
 
 **Semana 3 (1-2 mar):**
-- [ ] Ajustes post-review (si hay)
-- [ ] Demo: mostrar en Postman:
-  - Login → recibe tokens
-  - Endpoint sin token → 401
-  - Endpoint con token → funciona
-  - ProjectUser CRUD → funciona
+- [x] Ajustes post-review (no había)
+- [x] Demo: mostrar en Postman:
+  - ✅ Login → recibe tokens (3 roles)
+  - ✅ Endpoint sin token → 401
+  - ✅ Endpoint con token → funciona
+  - ✅ ProjectUser CRUD → funciona
+  - ✅ AuditLog automático → validado
 
 **Output esperado:**
-- [ ] AbstractUser migrado sin errores
-- [ ] JWT tokens generados y funcionales
-- [ ] ProjectUser con validaciones
-- [ ] AuditLog guardando eventos
-- [ ] 3+ commits por semana mínimo
-- [ ] 1-2 PRs descriptivos
-- [ ] 0 errores en endpoints
+- ✅ AbstractUser migrado sin errores
+- ✅ JWT tokens generados y funcionales (15min access + 1day refresh)
+- ✅ ProjectUser con validaciones y filtrado por rol
+- ✅ AuditLog guardando eventos automáticamente
+- ✅ 12+ commits con mensajes descriptivos
+- ✅ 3 PRs documentadas
+- ✅ 0 errores en endpoints
 
 ---
 
@@ -87,15 +89,15 @@ Objetivo: Pasar de "API abierta" a "plataforma con control de acceso real"
 - [ ] Crear página Login
 - [ ] Crear PrivateRoute (proteger rutas)
 - [ ] Crear layout base (header, sidebar)
-- [ ] Conectar login con `/api/token/` (esperar a que Osky termine)
+- [ ] Conectar login con `/api/token/` (backend listo ✅)
 - [ ] Guardar token en localStorage
 - [ ] 3+ commits
 
 **Semana 2 (24-28 feb):**
 - [ ] Crear página "Mis Proyectos"
-- [ ] Conectar con GET `/api/projects/` (esperar a que Osky termine)
+- [ ] Conectar con GET `/api/projects/` (backend listo ✅)
 - [ ] Crear página "Detalle Proyecto"
-- [ ] Button "Crear Proyecto" (aunque POST todavía no se use)
+- [ ] Button "Crear Proyecto" (POST listo en backend ✅)
 - [ ] PR al viernes
 - [ ] 3+ commits
 
@@ -107,13 +109,15 @@ Objetivo: Pasar de "API abierta" a "plataforma con control de acceso real"
   - Lista de proyectos visible
   - Detalle abre
 
-**Output esperado:**
-- [ ] Login funciona y guarda token
-- [ ] Rutas protegidas redirigen
-- [ ] Dashboard lista proyectos
-- [ ] 3+ commits por semana
-- [ ] 1-2 PRs descriptivos
-- [ ] 0 crashes en React
+**Output esperado (en progreso):**
+- ⏳ Login funciona y guarda token
+- ⏳ Rutas protegidas redirigen
+- ⏳ Dashboard lista proyectos
+- ⏳ 3+ commits por semana
+- ⏳ 1-2 PRs descriptivos
+- ⏳ 0 crashes en React
+
+**Backend Ready for Integration:** ✅ Todos los endpoints listos
 
 ---
 
