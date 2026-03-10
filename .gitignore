@@ -46,6 +46,7 @@ yarn-error.log
 
 # Documentation drafts (local only)
 *.md
+!docs/**/*.md
 !README.md
 !PLAN_EQUIPOS_SPRINT_1.md
 !ASIGNACIONES_SPRINT_1_A_6.md
