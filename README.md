@@ -222,7 +222,7 @@ python manage.py runserver
 ### Frontend
 
 ```bash
-cd fronted
+cd frontend
 
 npm install
 npm run dev

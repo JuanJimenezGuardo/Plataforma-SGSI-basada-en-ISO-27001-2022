@@ -14,7 +14,7 @@ ENV/
 .venv/
 backend/.venv/
 backend/venv/
-fronted/node_modules/
+frontend/node_modules/
 
 # Django
 *.log

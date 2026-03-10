@@ -425,7 +425,7 @@ python manage.py collectstatic --no-input
 ### **Fase 2: Frontend (30 min)**
 
 ```bash
-# En fronted/
+# En frontend/
 npm install
 
 # Crear .env.production
@@ -639,7 +639,7 @@ class Evidence(models.Model):
    └─ Reinicia con gunicorn
 
 6. Vercel (si frontend cambió):
-   ├─ Detecta cambios en /fronted
+    ├─ Detecta cambios en /frontend
    ├─ npm install
    ├─ npm run build
    └─ Deploy automático
