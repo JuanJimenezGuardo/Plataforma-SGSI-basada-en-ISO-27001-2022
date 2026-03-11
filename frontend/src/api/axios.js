@@ -4,6 +4,7 @@ import axios from 'axios';
 // Gracias a tu proxy, '/api' se redirige a tu Django en el puerto 8000.
 const api = axios.create({
   baseURL: '/api',
+  timeout: 10000,
 });
 
 // Interceptor: Antes de que cualquier petición salga hacia Django, 
