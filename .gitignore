@@ -49,6 +49,7 @@ yarn-error.log
 *.md
 !z_docs/**/*.md
 !README.md
+!backend/CHANGELOG.md
 
 # Local git backups
 backup.bundle
