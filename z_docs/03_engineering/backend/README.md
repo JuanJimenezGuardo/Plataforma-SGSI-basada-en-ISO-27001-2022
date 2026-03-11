@@ -158,12 +158,20 @@ python manage.py migrate
 # Crear superusuario
 python manage.py createsuperuser
 
-# Ejecutar tests
-python manage.py test
+# Ejecutar suite formal por apps
+python manage.py test apps.users.tests apps.companies.tests apps.projects.tests apps.phases.tests apps.tasks.tests
+
+# Ejecutar script demo de sprint (validacion funcional)
+python tests_demo/test_demo_sprint1.py
 
 # Shell de Django
 python manage.py shell
 ```
+
+## Tipos de Pruebas
+
+- Suite formal: `backend/apps/*/tests/` (pruebas unitarias/integracion)
+- Scripts demo: `backend/tests_demo/` (evidencia funcional de sprint)
 
 ## Endpoints API
 ```

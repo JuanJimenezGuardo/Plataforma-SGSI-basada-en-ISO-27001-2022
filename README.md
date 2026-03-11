@@ -229,6 +229,32 @@ npm run dev
 # Opens on http://localhost:3000/
 ```
 
+## Pruebas: Suite Formal vs Demo de Sprint
+
+Para evitar confusiones en revision tecnica y sustentacion, el repositorio maneja dos tipos de pruebas.
+
+### 1) Suite formal (unitarias/integracion por app)
+
+- Ubicacion: `backend/apps/*/tests/`
+- Uso: calidad tecnica, validacion reproducible, ejecucion tipo CI
+
+```bash
+cd backend
+python manage.py test apps.users.tests apps.companies.tests apps.projects.tests apps.phases.tests apps.tasks.tests
+```
+
+### 2) Scripts de validacion funcional (evidencia de sprint)
+
+- Ubicacion: `backend/tests_demo/`
+- Uso: demostraciones funcionales guiadas (no forman parte de la suite formal)
+
+```bash
+cd backend
+python tests_demo/test_demo_sprint1.py
+```
+
+Tambien puedes ejecutar otros scripts de demo en esa misma carpeta segun el escenario de presentacion.
+
 ---
 
 ## 🏅 Éxito del Proyecto
