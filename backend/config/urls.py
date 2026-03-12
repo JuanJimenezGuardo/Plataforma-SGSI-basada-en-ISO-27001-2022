@@ -10,6 +10,7 @@ from apps.companies.views import CompanyViewSet
 from apps.projects.views import ProjectViewSet, ProjectUserViewSet
 from apps.phases.views import PhaseViewSet
 from apps.tasks.views import TaskViewSet
+from apps.assets.views import AssetViewSet
 
 # Crear un único router compartido para evitar conflictos
 router = DefaultRouter()
@@ -20,6 +21,7 @@ router.register(r'projects', ProjectViewSet)
 router.register(r'project-users', ProjectUserViewSet)
 router.register(r'phases', PhaseViewSet)
 router.register(r'tasks', TaskViewSet)
+router.register(r'assets', AssetViewSet, basename='assets')
 
 urlpatterns = [
     path('', home, name='home'),  # Ruta raíz
@@ -27,4 +29,5 @@ urlpatterns = [
     path('api/', include(router.urls)),  # Todas las rutas del router
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  # JWT
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),  # JWT
+    path("api/", include("apps.assets.urls")),
 ]
