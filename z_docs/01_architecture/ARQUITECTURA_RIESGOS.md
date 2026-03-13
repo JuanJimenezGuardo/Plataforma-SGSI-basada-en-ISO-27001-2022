@@ -1,4 +1,4 @@
-# ARQUITECTURA DE GESTIÓN DE RIESGOS — VIT
+No # ARQUITECTURA DE GESTIÓN DE RIESGOS — VIT
 
 > **Nota de contexto (al 18-02-2026):** el backend cuenta con Users/Companies/Projects/Phases/Tasks. Los módulos SGSI (Scope, Asset, Risk, ISOControl, SoAItem, Evidence, Report, AuditLog) están definidos a nivel documental y se implementarán en las siguientes iteraciones.
 ## Alineación con ISO/IEC 27001:2022

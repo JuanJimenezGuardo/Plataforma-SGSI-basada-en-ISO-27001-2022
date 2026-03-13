@@ -1,8 +1,8 @@
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from .models import Project, ProjectUser
-from .serializers import ProjectSerializer, ProjectUserSerializer
+from .models import Project, ProjectUser, ProjectContact
+from .serializers import ProjectSerializer, ProjectUserSerializer, ProjectContactSerializer
 from apps.users.permissions import IsConsultantOrReadOnly
 
 class ProjectViewSet(viewsets.ModelViewSet):
@@ -49,4 +49,10 @@ class ProjectUserViewSet(viewsets.ModelViewSet):
     """
     queryset = ProjectUser.objects.select_related('project', 'user')
     serializer_class = ProjectUserSerializer
+    permission_classes = [IsConsultantOrReadOnly]
+
+
+class ProjectContactViewSet(viewsets.ModelViewSet):
+    queryset = ProjectContact.objects.select_related('project', 'contact')
+    serializer_class = ProjectContactSerializer
     permission_classes = [IsConsultantOrReadOnly]

@@ -33,6 +33,9 @@ INSTALLED_APPS = [
     'apps.projects',
     'apps.phases',
     'apps.tasks',
+    'apps.contacts',
+    'apps.documents',
+    'apps.assets',
 ]
 
 MIDDLEWARE = [

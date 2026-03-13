@@ -337,4 +337,3 @@ Una vez verificados todos los checkpoints, grabar video de 3-5 minutos siguiendo
 
 ---
 
-**¿Listo?** ¡Hora de grabar! 🎬
