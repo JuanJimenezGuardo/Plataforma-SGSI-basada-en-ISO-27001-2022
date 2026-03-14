@@ -140,71 +140,78 @@ Este sprint sienta las bases de seguridad para producción:
 
 ---
 
-## ✅ SPRINT 2 (3-16 mar) — Scope + Assets (SGSI Base)
+## ✅ SPRINT 2 (11-24 mar) — Reorganizado BD-First
+
+Objetivo: cerrar y validar el modelo de base de datos antes de abrir API y frontend.
+
+Regla operativa del sprint:
+- Hasta no cerrar BD, no se tocan API ni frontend salvo fixes criticos.
+- No se crean serializers, viewsets, endpoints ni pantallas nuevas durante Fase 1-3.
+
+Alcance congelado de entidades:
+- Company
+- Contact
+- Project
+- ProjectUser
+- ProjectContact
+- Phase
+- Task
+- Document
+- Asset (sin rediseño)
+
+Cambios obligatorios de esquema:
+- Company deja de ser dueno de contact_person y contact_position.
+- Project, Phase y Task incorporan planned_start_date, planned_end_date, actual_start_date, actual_end_date.
+- Task incorpora work_notes.
+- Document entra como entidad formal de trazabilidad.
 
 ### Arquitecto (3pleJ)
 
-**Semana 1 (3-7 mar):**
-- [ ] Diseñar modelo Scope (alcance, exclusiones, justificación, estado)
-- [ ] Diseñar modelo Asset (inventario, denominación, clasificación, propietario)
-- [ ] Definir validaciones (un asset siempre tiene un proyecto)
-- [ ] Definir relación Scope ↔ Project (1-N)
-- [ ] Documentar en README
+**Semana 1:**
+- [ ] Cerrar y aprobar diagrama final de datos
+- [ ] Congelar nombres de campos, relaciones y enums
+- [ ] Aprobar constraints y reglas de integridad
 
-**Semana 2 (10-14 mar):**
-- [ ] Revisar implementación de Osky
-- [ ] Code review de Scope + Asset models
-- [ ] Validar que endpoints sean correctos
-
-**Semana 3 (16 mar):**
-- [ ] Demo
-
----
+**Semana 2:**
+- [ ] Validar cierre de BD con checklist formal
+- [ ] Autorizar apertura de API solo con esquema estable
 
 ### Backend Implementador (Osky)
 
-**Semana 1 (3-7 mar):**
-- [ ] Crear modelo Scope (siguiendo especificación definida)
-- [ ] Crear modelo Asset (siguiendo especificación definida)
-- [ ] Crear serializers
-- [ ] Crear viewsets
-- [ ] Endpoints: `/api/scopes/`, `/api/assets/`
+**Semana 1:**
+- [ ] Implementar modelos Contact, ProjectContact y Document
+- [ ] Agregar campos planned/actual en Project, Phase y Task
+- [ ] Agregar work_notes en Task
+- [ ] Crear migraciones estructurales
 
-**Semana 2 (10-14 mar):**
-- [ ] Tests básicos
-- [ ] PR al viernes
-- [ ] Code review → arreglar si Tú sugiere cambios
-
-**Semana 3 (16 mar):**
-- [ ] Demo
-
----
+**Semana 2:**
+- [ ] Ejecutar data migration legacy Company -> Contact
+- [ ] Validar constraints y relaciones
+- [ ] Resolver issues de migracion sin abrir API
 
 ### Frontend Developer (Tinky)
 
-**Semana 1 (3-7 mar):**
-- [ ] Crear página "Alcance del Proyecto"
-- [ ] Crear página "Inventario de Activos"
-- [ ] Ambas con tabs en el detalle del proyecto
-
-**Semana 2 (10-14 mar):**
-- [ ] CRUD: crear, editar, listar, borrar (Scope y Asset)
-- [ ] Formularios con validación básica
-- [ ] PR al viernes
-
-**Semana 3 (16 mar):**
-- [ ] Demo
-
----
+**Semana 1-2:**
+- [ ] Congelar nuevas pantallas durante Fase 1-3
+- [ ] Atender solo bugs criticos
+- [ ] Preparar mapeo de pantallas contra contrato de datos final
+- [ ] Iniciar integracion cuando BD quede aprobada
 
 ### 🏭 **Impacto en Producción (Sprint 2)**
 
-- **Migraciones Reversibles:** Todos los cambios de modelo deben ser migrables forward y backward
-- **Validaciones en BD:** No confiar solo en Django ORM, agregar constraints en PostgreSQL
-- **Relaciones Normalizadas:** Diseño de BD limpio = no problemas en prod
-- **Indexación:** Pensar en queries lentas ahora, indexar desde el inicio (Scope.project, Asset.scope)
-- **Testing de Migraciones:** Cada migration debe testearse localmente antes de production
-- **N+1 Queries:** Usar `select_related()` y `prefetch_related()` desde el inicio para DRF
+- **Migrations first:** todos los cambios de modelo deben ser reversibles y probados.
+- **Integridad en BD:** constraints reales en PostgreSQL, no solo validacion de serializer.
+- **Consistencia de datos:** migracion legacy validada antes de exponer endpoints.
+- **Contrato estable:** API se abre solo cuando el esquema este congelado para evitar retrabajo.
+
+### ✅ Criterio de cierre de BD (obligatorio)
+
+- [ ] Diagrama final aprobado
+- [ ] Models definitivos aprobados
+- [ ] Migraciones limpias
+- [ ] Data migration legacy validada
+- [ ] Constraints probados
+- [ ] Sin cambios pendientes en nombres, relaciones ni enums
 
 ---
 
@@ -512,7 +519,7 @@ Los riesgos son cálculos críticos en SGSI:
 
 ### Arquitecto + Líder Técnico (3pleJ)
 - Sprint 1: Diseño Auth + permisos + ProjectUser + AuditLog + implementación User/permisos
-- Sprint 2: Diseño Scope + Asset + validaciones
+- Sprint 2: Cierre de modelo BD-first (Contact, ProjectContact, Document, fechas planned/actual, constraints)
 - Sprint 3: Diseño Risk (CRÍTICO) + fórmula + cálculos
 - Sprint 4: Diseño SoA + fixture ISO 27001
 - Sprint 5: Diseño Evidence + auditoría completa
@@ -521,7 +528,7 @@ Los riesgos son cálculos críticos en SGSI:
 
 ### Backend Implementador
 - Sprint 1: Implementar JWT + ProjectUser + AuditLog signals
-- Sprint 2: Scope + Asset
+- Sprint 2: Implementar persistencia BD-first (Contact, ProjectContact, Document, migraciones y validaciones)
 - Sprint 3: Risk + scoring automático
 - Sprint 4: Fixtures + SoAItem automático
 - Sprint 5: Evidence + upload
@@ -530,7 +537,7 @@ Los riesgos son cálculos críticos en SGSI:
 
 ### Frontend Developer
 - Sprint 1: Login + layout + rutas protegidas
-- Sprint 2: Scope UI + Asset UI
+- Sprint 2: Frontend congelado durante Fase 1-3, solo bugs críticos y preparación de contrato de datos
 - Sprint 3: Riesgos UI + scoring visual
 - Sprint 4: SoA UI + checkboxes
 - Sprint 5: Evidencias UI + upload
@@ -551,9 +558,9 @@ Los riesgos son cálculos críticos en SGSI:
 
 ### Sprint 2
 
-**🟢 Verde:** Scope + Asset modelos creados, endpoints funcionan, UI muestra datos  
-**🟡 Amarillo:** Modelos creados pero con bugs, endpoints parciales  
-**🔴 Rojo:** Scope o Asset no existen, UI no conecta  
+**🟢 Verde:** Modelo BD-first cerrado y aprobado (Contact/ProjectContact/Document + fechas planned/actual), migraciones limpias y constraints validados  
+**🟡 Amarillo:** Modelos y migraciones creados, pero faltan validaciones de integridad o quedan inconsistencias de esquema  
+**🔴 Rojo:** Modelo no cerrado, cambios pendientes de nombres/relaciones/enums, o migraciones inestables  
 
 ---
 

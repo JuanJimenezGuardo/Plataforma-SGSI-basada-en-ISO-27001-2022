@@ -27,9 +27,7 @@ class ProjectUserTestCase(TestCase):
             address="Test Address",
             city="Test City",
             state="Test State",
-            country="Colombia",
-            contact_person="John Doe",
-            contact_position="CEO"
+            country="Colombia"
         )
         
         # Create users with different roles
@@ -60,8 +58,8 @@ class ProjectUserTestCase(TestCase):
             description="Test project",
             company=cls.company,
             status="PLANNING",
-            start_date=date.today(),
-            end_date=date.today() + timedelta(days=365),
+            planned_start_date=date.today(),
+            planned_end_date=date.today() + timedelta(days=365),
             created_by=cls.admin_user
         )
     
@@ -231,9 +229,7 @@ class ProjectFilteringTestCase(TestCase):
             address="Filter Address",
             city="Filter City",
             state="Filter State",
-            country="Colombia",
-            contact_person="Filter Person",
-            contact_position="Manager"
+            country="Colombia"
         )
         
         # Create users
@@ -264,7 +260,7 @@ class ProjectFilteringTestCase(TestCase):
             description="First project",
             company=cls.company,
             status="PLANNING",
-            start_date=date.today(),
+            planned_start_date=date.today(),
             created_by=cls.admin_user
         )
         
@@ -273,7 +269,7 @@ class ProjectFilteringTestCase(TestCase):
             description="Second project",
             company=cls.company,
             status="IN_PROGRESS",
-            start_date=date.today(),
+            planned_start_date=date.today(),
             created_by=cls.admin_user
         )
         
