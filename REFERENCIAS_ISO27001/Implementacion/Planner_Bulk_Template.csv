@@ -1,0 +1,14 @@
+﻿PlanName,PlanId,Bucket,TaskTitle,TaskNotes,Start,Due,AssignTo,Checklist
+SGSI ISO27001 – VIT (multi-cliente),,F0 – Inicio,F0.1 Charter y RACI,"Aprobar Charter, RACI y calendario del comité.",2025-10-14,2025-10-20,,Charter aprobado | RACI publicado | Calendario creado
+SGSI ISO27001 – VIT (multi-cliente),,F0 – Inicio,F0.2 Plan 150 días,"Definir fases, entregables y recursos.",2025-10-14,2025-10-23,,Hitos definidos | Recursos asignados
+SGSI ISO27001 – VIT (multi-cliente),,F1 – Contexto y Alcance,F1.1 Contexto/Partes,Completar matrices y derivar requisitos.,2025-10-21,2025-11-02,,Matriz contexto | Matriz partes | Matriz legal
+SGSI ISO27001 – VIT (multi-cliente),,F1 – Contexto y Alcance,F1.2 Alcance/Política,Definir alcance e interfaces; publicar política.,2025-10-28,2025-11-12,,Documento de alcance | Política SI publicada
+SGSI ISO27001 – VIT (multi-cliente),,F2 – Riesgos y Controles,F2.1 Inventario de Activos,Inventario con dueños y clasificación C/I/D.,2025-11-07,2025-11-22,,Hoja 04-Activos | Esquema de etiquetas
+SGSI ISO27001 – VIT (multi-cliente),,F2 – Riesgos y Controles,F2.2 Metodología/Evaluación,Aprobar metodología y valorar riesgos.,2025-11-17,2025-12-12,,Metodología aprobada | Matriz 05-Riesgos
+SGSI ISO27001 – VIT (multi-cliente),,F2 – Riesgos y Controles,F2.3 PTR y SoA,Completar PTR y SoA (93 controles).,2025-12-02,2025-12-22,,06-PTR completo | 07-SoA-93 justificada
+SGSI ISO27001 – VIT (multi-cliente),,F3 – Implementación y Operación,F3.1 Políticas/Procedimientos,Publicar procedimientos y formar equipos.,2025-12-22,2026-01-31,,Procedimientos publicados | Registros operando | Capacitación completada
+SGSI ISO27001 – VIT (multi-cliente),,F3 – Implementación y Operación,F3.2 Control Operativo,"Control de cambios, terceros y evidencias.",2026-01-01,2026-02-10,,ITSM activo | CMDB actualizada | Matriz terceros
+SGSI ISO27001 – VIT (multi-cliente),,F4 – Evaluación y Mejora,F4.1 KPI/KRI,Tablero con definiciones y metas.,2026-02-10,2026-02-25,,KPI definidos | Primer corte de métricas
+SGSI ISO27001 – VIT (multi-cliente),,F4 – Evaluación y Mejora,F4.2 Auditoría Interna,Ejecución de programa y ACC.,2026-02-15,2026-03-07,,Plan de auditoría | Informes y ACC
+SGSI ISO27001 – VIT (multi-cliente),,F4 – Evaluación y Mejora,F4.3 Revisión Dirección,Acta con decisiones y recursos.,2026-02-25,2026-03-07,,Acta RD | Plan de mejora
+SGSI ISO27001 – VIT (multi-cliente),,F5 – Readiness,F5.1 Simulacro y cierres,GAP final y readiness review.,2026-03-07,2026-03-12,,Informe readiness | SoA/PTR final | Cierre de acciones
