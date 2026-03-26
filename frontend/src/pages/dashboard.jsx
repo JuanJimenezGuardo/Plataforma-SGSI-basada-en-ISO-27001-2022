@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import api from '../api/axios';
 import { useNavigate, Link } from 'react-router-dom';
+import ThemeToggle from '../components/ThemeToggle'; // <-- Importación del botón
 
 export default function Dashboard() {
     const { user, logout } = useContext(AuthContext);
@@ -75,9 +76,13 @@ export default function Dashboard() {
                     </div>
                 </div>
                 
-                <button onClick={handleLogout} className="btn btn-danger">
-                    TERMINAR SESIÓN
-                </button>
+                {/* Contenedor flex para agrupar los botones */}
+                <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+                    <ThemeToggle />
+                    <button onClick={handleLogout} className="btn btn-danger">
+                        TERMINAR SESIÓN
+                    </button>
+                </div>
             </header>
 
             {/* Grid de Proyectos / Módulos */}
