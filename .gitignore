@@ -47,9 +47,17 @@ yarn-error.log
 
 # Documentation drafts (local only)
 *.md
-!z_docs/**/*.md
 !README.md
 !backend/CHANGELOG.md
 
+# Confidential project documentation (keep private)
+z_docs/
+
 # Local git backups
 backup.bundle
+
+# Local tooling and portable environments
+.tools/
+
+# Optional private reference material (keep local)
+REFERENCIAS_ISO27001/

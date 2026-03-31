@@ -1,17 +1,32 @@
-# VIT — Plataforma SGSI ISO 27001
+# VIT-SGSI - Portafolio Publico
 
-**Plataforma web para implementación de Sistemas de Gestión de Seguridad de Información (SGSI) basados en ISO 27001:2022**
+Este repositorio es la version publica de presentacion del proyecto academico VIT, una plataforma web para implementacion de SGSI basados en ISO 27001:2022.
+
+El desarrollo completo del proyecto se trabajo en un repositorio privado durante el proceso academico. Esta version publica muestra la arquitectura, componentes implementados, evidencia tecnica y una muestra representativa del trabajo.
 
 ---
 
-## 🎯 Objetivo del Proyecto
+## Objetivo del Proyecto
 
-Permitir a empresas implementar ISO 27001 de forma estructurada, con gestión de:
-- Proyectos y fases de implementación
-- Identificación y análisis de riesgos
-- Statement of Applicability (SoA)
-- Carga y seguimiento de evidencias
-- Reportes de conformidad
+Construir una plataforma para apoyar a organizaciones en la implementacion de ISO 27001, con modulos para:
+- Gestion de proyectos y fases
+- Gestion de tareas y responsables
+- Base de autenticacion y permisos por rol
+- Trazabilidad y auditoria de eventos
+- Base para riesgos, controles y evidencia documental
+
+## Alcance de Esta Version Publica
+
+- Se mantiene codigo y documentacion tecnica utiles para evaluacion profesional
+- No se publica informacion sensible ni configuraciones privadas
+- El repositorio se enfoca en demostrar diseno, implementacion y criterio tecnico
+
+## Mi Rol
+
+- Liderazgo y coordinacion tecnica del proyecto
+- Definicion de alcance, arquitectura y plan de sprints
+- Desarrollo de funcionalidades backend y soporte a integracion frontend
+- Seguimiento de entregables, calidad tecnica y evidencia de avance
 
 ---
 
