@@ -1,6 +1,6 @@
-# VIT-SGSI - Portafolio Publico
+# Plataforma SGSI ISO 27001:2022 - Portafolio Publico
 
-Este repositorio es la version publica de presentacion del proyecto academico VIT, una plataforma web para implementacion de SGSI basados en ISO 27001:2022.
+Proyecto academico orientado al diseno y desarrollo de una aplicacion web para apoyar la gestion de seguridad de la informacion en una organizacion, aplicando la norma ISO 27001:2022. La solucion permite organizar activos, riesgos, usuarios, controles y documentacion asociada al SGSI.
 
 El desarrollo completo del proyecto se trabajo en un repositorio privado durante el proceso academico. Esta version publica muestra la arquitectura, componentes implementados, evidencia tecnica y una muestra representativa del trabajo.
 
